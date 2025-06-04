@@ -63,61 +63,6 @@ int main(int argc, char *argv[])
     directions_4['D'] = 'U';
     directions_4['L'] = 'R';
     directions_4['R'] = 'L';
-
-    if (m == 1){
-        if (rank == 0){
-            map <pair <int, int>, vector <pair <int, char>>> balls;
-            for (int i = 0; i < k; i++)
-            {
-                int x, y;
-                char ch;
-                cin >> x >> y >> ch;
-                balls[{x, y}].push_back({i, ch});
-            }
-            for (int i = 0; i < t; i++)
-            {
-                map <pair <int, int>, vector <pair <int, char>>> new_balls;
-                for (auto &it: balls){
-                    for (int j = 0; j < it.second.size(); j++){
-                        pair <int, int> ret = move(it.first, it.second[j].second, n, m);
-                        new_balls[ret].push_back({it.second[j].first, it.second[j].second});
-                    }
-                }
-                balls = new_balls;
-                for (auto &it: balls)
-                {
-                    if (it.second.size() == 2) {
-                        vector<pair <int, char>> temp = it.second;
-                        for (pair <int, char> &val: temp)
-                            val.second = directions_2[val.second];
-                        it.second = temp;
-                    }
-                    else if (it.second.size() == 4) {
-                        vector<pair <int, char>> temp = it.second;
-                        for (pair <int, char> &val: temp)
-                            val.second = directions_4[val.second];
-                        it.second = temp;
-                    }
-                }
-            }
-            vector <pair <int, pair <pair <int, int>, char>>> pairs;
-            for (auto &it: balls){
-                for (auto &it1: it.second)
-                    pairs.push_back({it1.first, {it.first, it1.second}});
-            }
-            sort(pairs.begin(), pairs.end(), [](auto &x, auto &y){
-                if (x.first < y.first)
-                    return true;
-                return false;
-            });
-            for (auto &it: pairs)
-                cout << it.second.first.first << " " << it.second.first.second << " " << it.second.second << endl;
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-        MPI_Finalize();
-        return 0;
-    }
-
     map <int, vector <pair <int, char>>> balls[n];
 
     if (rank == 0){
