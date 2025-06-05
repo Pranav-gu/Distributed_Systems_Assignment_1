@@ -51,7 +51,7 @@ Key Features:
 ### Compile
 
 ```bash
-mpic++ -std=c++17 -O2 balls_simulation.cpp -o balls_simulation
+mpic++ -std=c++17 -O2 Simulation.cpp -o balls_simulation
 ```
 
 ### Run
