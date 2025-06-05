@@ -32,10 +32,9 @@ To compile and run this code, you will need:
 You'll typically compile this code using an MPI wrapper for your C++ compiler. For example, with OpenMPI:
 
 ```sh
-mpic++ -o dfs_server your_file_name.cpp -std=c++11
+mpic++ -o dfs_server Distributed_File_System.cpp -std=c++11
 ```
 
-Replace `your_file_name.cpp` with the actual name of your source file (e.g., `dfs.cpp`).
 
 ### Running the System
 
