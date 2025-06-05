@@ -33,7 +33,7 @@ b1 b2 ... bN                  // List of blocked node IDs
 Compile and run the program using:
 
 ```bash
-mpic++ -o reverse_bfs reverse_bfs.cpp
+mpic++ -o reverse_bfs Parallel_BFS.cpp
 mpirun -np <num_processes> ./reverse_bfs input.txt output.txt
 ```
 
